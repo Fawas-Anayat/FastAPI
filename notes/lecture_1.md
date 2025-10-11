@@ -18,3 +18,11 @@ pydantics-- data validation.
 FastAPI is fast to code and run and its due to following reasons.  
 
 ![alt text](image-1.png)
+
+followiing is the comparison of the flask with the fastapi.the first flowchart is of the flask and the second one is of the fastapi.  
+![alt text](image-2.png)
+- in the fastapi all the components are asynchronous in nature means they can hanadle multiple requests at a time and thats why the fastapi is fast to run.  
+also,
+![alt text](image-3.png)
+
+- when we want to fetch some data from server we do the get request and when we want to send some data to the server we do the post request.  
