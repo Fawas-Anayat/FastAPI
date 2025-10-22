@@ -1,4 +1,6 @@
-from fastapi import FastAPI
+# practice_project_1
+
+"""from fastapi import FastAPI
 
 app=FastAPI()
 @app.get('/')
@@ -13,3 +15,7 @@ def about():
 @app.get('/info')
 def info():
     return "this is the new adding in the web page"
+
+    """
+
+# practice_project_2

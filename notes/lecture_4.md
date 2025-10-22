@@ -22,3 +22,4 @@ following are some of the famous status codes.
 ## HTTPexception
 
 ![alt text](image-9.png)
+
