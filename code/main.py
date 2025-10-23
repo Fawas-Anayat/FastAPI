@@ -64,3 +64,7 @@ def pat_data(patient_id:str):
     if patient_id in l:
         return data[patient_id]
     raise HTTPException(status_code=404,detail="patient record not found in the database")
+
+@app.get('/informatin')
+def info():
+    return "this is the database of the patients having all the information about the patients having their names and other details"
