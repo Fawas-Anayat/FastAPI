@@ -1,7 +1,7 @@
 """here we are going to  create a project in which our role is to build APIs
 and upon hitting them the user will get some information"""
 
-from fastapi import FastAPI, Path, HTTPException
+from fastapi import FastAPI, Path, HTTPException,Query
 app=FastAPI()
 data={
     'P001':"usman",
@@ -26,3 +26,11 @@ def view_all_patients():
 @app.get('/informatin')
 def info():
     return "this is the database of the patients having all the information about the patients having their names and other details"
+
+@app.get('/sort')
+def sort_patients(order_by:str=Query(...,description=('sort the patients on the basis of the ascending or descending order')))
+    # the three dots above shows that this is the required paremater and is not optional
+    valid_orders=['asc','dsc']
+    if order_by not in valid_orders:
+        raise HTTPException(status_code=400,detail=f'invalid order,select from {valid_orders}')
+    
