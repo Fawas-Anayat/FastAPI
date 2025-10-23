@@ -65,6 +65,10 @@ def pat_data(patient_id:str=Path(...,title='patient ID',description='this is the
         return {"patient ID": {patient_id},"patinet name":data[patient_id]}
     raise HTTPException(status_code=404,detail="patient record not found in the database")
 
+@app.get('/view')
+def view_all_patients():
+    return data
+
 @app.get('/informatin')
 def info():
     return "this is the database of the patients having all the information about the patients having their names and other details"
