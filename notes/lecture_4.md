@@ -23,3 +23,13 @@ following are some of the famous status codes.
 
 ![alt text](image-9.png)
 
+## Query paramter
+- help us show the whole data in any sorted way of our choice
+
+![alt text](image-10.png)
+
+ the query parameter has also a function just like the one that was in the case of the path parameter.  
+
+ ![alt text](image-11.png)
+
+ 
