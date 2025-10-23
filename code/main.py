@@ -16,7 +16,7 @@ def about():
 def info():
     return "this is the new adding in the web page"
 
-    """
+    
 
 # practice_project_2
 
@@ -45,3 +45,22 @@ def create_item(name: str, price: float, quantity: int = 1):
 @app.get("/search")
 def search_items(keyword: str, max_price: float = 100.0):
     return {"searching_for": keyword, "max_price": max_price}
+
+
+    """
+
+from fastapi import FastAPI, Path, HTTPException
+app=FastAPI()
+data={
+    'P001':"usman",
+    'P002':"akber"
+}
+def load_data(patient_id:str):
+    return data[patient_id]
+
+@app.get('/data/{patient_id}')
+def pat_data(patient_id:str):
+    l=data.keys()
+    if patient_id in l:
+        return data[patient_id]
+    raise HTTPException(status_code=404,detail="patient record not found in the database")
