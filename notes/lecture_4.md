@@ -32,4 +32,7 @@ following are some of the famous status codes.
 
  ![alt text](image-11.png)
 
- 
+
+- path paramter=> konsa data fetch kr k lana hay
+- query parameter=> data kis order may fetch kr kay lana hay(fileterng etc)
+and both can be used at a single API end point
