@@ -28,9 +28,10 @@ def info():
     return "this is the database of the patients having all the information about the patients having their names and other details"
 
 @app.get('/sort')
-def sort_patients(order_by:str=Query(...,description=('sort the patients on the basis of the ascending or descending order')))
+def sort_patients(order_by:str=Query(...,description=('sort the patients on the basis of the ascending or descending order'))):
     # the three dots above shows that this is the required paremater and is not optional
     valid_orders=['asc','dsc']
     if order_by not in valid_orders:
         raise HTTPException(status_code=400,detail=f'invalid order,select from {valid_orders}')
-    
+    sorted_data=sorted(data.values())
+    return sorted_data 
