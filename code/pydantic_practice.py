@@ -16,9 +16,10 @@ insert_details("usman",34)
 """
 
 from pydantic import BaseModel
+# from typing import List,Dict
 
 class patient(BaseModel):  #this is the model means we can say that its the standard and we can use it    
-    name:str
+    name:str               # these are te simpler datatypes and we can use the complex ones also like lists,dictionaries etc
     age:int
 
 def insert_details(patientt:patient):
