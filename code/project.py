@@ -33,5 +33,7 @@ def sort_patients(order_by:str=Query(...,description=('sort the patients on the 
     valid_orders=['asc','dsc']
     if order_by not in valid_orders:
         raise HTTPException(status_code=400,detail=f'invalid order,select from {valid_orders}')
+    if order_by == 'dsc':
+        sorted_data_dsc=sorted(data.values())
     sorted_data=sorted(data.values())
     return sorted_data 
