@@ -15,31 +15,39 @@ insert_details("usman",34)
 
 """
 
-from pydantic import BaseModel,EmailStr,AnyUrl,Field,field_validator
+from pydantic import BaseModel,EmailStr,AnyUrl,Field,field_validator,model_validator
 # from typing import List,Dict
 
 class patient(BaseModel):  #this is the model means we can say that its the standard and we can use it    
     name:str               # these are te simpler datatypes and we can use the complex ones also like lists,dictionaries etc
     mail:EmailStr           # we can also make some data as optional
     url:AnyUrl
+    contact:dict
     age:int=Field(gt=0)             # here we can define the range of the field in which this data is placed       
+
+    @field_validator('mail')
+    @classmethod
+    def mail_validator(cls,value):
+        valid_domains=['gmail.com','gpgc.com']
+        domain_name=value.split('@')[-1]
+        
+        if domain_name not in valid_domains:
+            raise ValueError(f'not a valid domain name .choose from{valid_domains}')
+        
+        return value
+    @model_validator(mode='after')  # after means we will take the value after the type cusrsion and vice versa for the before
+    def validate_emergency_contact(cls,model):
+        if model.age >60 and 'emergency' not in model.contact:
+            raise ValueError('patient greater than 60 must have an emergency contact number')
+    
+
 
 def insert_details(patientt:patient):
     print(patientt.name)
     print(patientt.age)
     print(patientt.mail)
     print(patientt.url)
-@field_validator('mail')
-@classmethod
-def mail_validator(cls,value):
-    valid_domains=['gmail.com','gpgc.com']
-    domain_name=value.split('@')[-1]
-    
-    if domain_name not in valid_domains:
-        raise ValueError(f'not a valid domain name .choose from{valid_domains}')
-    
-    return value
-        
-personal_info={'name':'usman','mail':'abc@hu.com','age':34,'url':'http://linked.com/234'}
+    print(patientt.contact)
+personal_info={'name':'usman','mail':'abc@gpgc.com','age':67,'url':'http://linked.com/234','contact':{'phone number':'345555','emergency':'347644'}}
 patient1=patient(**personal_info)
 insert_details(patient1)

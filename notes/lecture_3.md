@@ -17,4 +17,4 @@ what operation we are going to perform using the http method we have to use some
 - for recieving/retrieving the information we use the get.  
 - for giving the information we use the post.  
 - for the update we use the put.  
-- for delete we the delete
+- for delete we the delete.

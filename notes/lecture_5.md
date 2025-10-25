@@ -40,3 +40,13 @@ def greet():
 greet()
 
 -------------------------------------------------------------
+
+## model-validator
+we use it to validate by combining more than one fields and validate them.  
+- both the model and the field validators must be inside the class means inside the model.
+
+
+--------------------------------------------------------------------
+
+## computed field
+its values are not provided by the user,instead we use values of the other fields to calculate it.
