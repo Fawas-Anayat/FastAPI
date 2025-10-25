@@ -15,4 +15,8 @@ it works in the following three steps
 
 ### data validation
 we can validate data using the pydantic as it also has some built in data types like for the validation of the email we has the Emailstr
-
+- EmailStr --> for the validation of the emails
+- AnyUrl --> for the validation of the URLs
+- Field --> used for both the numerical as well as the str datatypes and is used for the data validation.
+-----field is also used for adding the meta data.,,for this purpose import the annotated from the typing module and then use it along with the Field and hence can be used for the data validation.
+---as the pydantic sometimes converts the '30' into 30 and if we don't want it then we have to do it using the field and we can do it by making the strict parameter of the field as true.
