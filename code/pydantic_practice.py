@@ -15,7 +15,7 @@ insert_details("usman",34)
 
 """
 
-from pydantic import BaseModel,EmailStr,AnyUrl,Field
+from pydantic import BaseModel,EmailStr,AnyUrl,Field,field_validator
 # from typing import List,Dict
 
 class patient(BaseModel):  #this is the model means we can say that its the standard and we can use it    
@@ -29,7 +29,17 @@ def insert_details(patientt:patient):
     print(patientt.age)
     print(patientt.mail)
     print(patientt.url)
-
-personal_info={'name':'usman','mail':'abc@gmail.com','age':34,'url':'http://linked.com/234'}
+@field_validator('mail')
+@classmethod
+def mail_validator(cls,value):
+    valid_domains=['gmail.com','gpgc.com']
+    domain_name=value.split('@')[-1]
+    
+    if domain_name not in valid_domains:
+        raise ValueError(f'not a valid domain name .choose from{valid_domains}')
+    
+    return value
+        
+personal_info={'name':'usman','mail':'abc@hu.com','age':34,'url':'http://linked.com/234'}
 patient1=patient(**personal_info)
 insert_details(patient1)
