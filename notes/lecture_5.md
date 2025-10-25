@@ -12,3 +12,7 @@ it works in the following three steps
 ![alt text](image-12.png)
 
 - apart from the data validation,pydantic offers some other features also like sometimes converts the data types as per the need.like conversion of '30' into 30 if the need is of the 30 
+
+### data validation
+we can validate data using the pydantic as it also has some built in data types like for the validation of the email we has the Emailstr
+

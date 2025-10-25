@@ -15,17 +15,19 @@ insert_details("usman",34)
 
 """
 
-from pydantic import BaseModel
+from pydantic import BaseModel,EmailStr
 # from typing import List,Dict
 
 class patient(BaseModel):  #this is the model means we can say that its the standard and we can use it    
     name:str               # these are te simpler datatypes and we can use the complex ones also like lists,dictionaries etc
-    age:int
+    mail:EmailStr
+    age:int                # we can also make some field as optional
 
 def insert_details(patientt:patient):
     print(patientt.name)
     print(patientt.age)
+    print(patientt.mail)
 
-personal_info={'name':'usman','age':34}
+personal_info={'name':'usman','mail':'abc@gmail.com','age':34}
 patient1=patient(**personal_info)
 insert_details(patient1)
