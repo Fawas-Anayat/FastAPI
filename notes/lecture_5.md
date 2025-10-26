@@ -51,3 +51,8 @@ we use it to validate by combining more than one fields and validate them.
 ## computed field
 its values are not provided by the user,instead we use values of the other fields to calculate it.
 eg computing the value of the BMI based on the values of the height and the weight provided by the user.
+
+## Nested models
+when we use the one basemodel as a field in the other model then its known as the nested model.
+
+![alt text](image-13.png)
