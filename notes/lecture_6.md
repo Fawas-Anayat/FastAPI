@@ -14,3 +14,6 @@ means when the client wanrts to recieve some information from the client.
 ![alt text](image-15.png)
 
 
+
+
+# put and delete in the fastapi
