@@ -47,7 +47,7 @@ def search_items(keyword: str, max_price: float = 100.0):
     return {"searching_for": keyword, "max_price": max_price}
 
 
-    """
+    
 
 from fastapi import FastAPI, Path, HTTPException
 app=FastAPI()
@@ -71,4 +71,11 @@ def view_all_patients():
 
 @app.get('/informatin')
 def info():
-    return "this is the database of the patients having all the information about the patients having their names and other details"
+    return "this is the database of the patients having all the information about the patients having their names and other details"""
+
+from fastapi import FastApi
+app=FastApi()
+
+@app.get('/')
+def about():
+    return {'message':'this is the first fastapi app'}
