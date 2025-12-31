@@ -1,6 +1,6 @@
 from fastapi import FastAPI ,HTTPException
 from typing import Optional
-from pydantic import basemodel
+from pydantic import BaseModel
 
 # Dummy student data for practice
 students = [
@@ -81,9 +81,26 @@ def students_filtering(name:Optional[str]=None,city:Optional[str]=None,grade:Opt
         results=[ct for ct in results if city.lower() in ct['city'].lower()]
     return results
 
-class std(basemodel):
-    id:int,
-    name:str,
-    age:int=18,
-    city:str,
+class std(BaseModel):
+    id:int
+    name:str
+    age:int=18
+    city:str
     grade:Optional[str]=None
+
+
+@app.put('/updateStudents/{student_id}')
+def update_student(student_id:int , student:std):
+    for i,j in enumerate(students):
+        if student_id == j['id']:
+            student[i]=student.dic()
+            return {'message':'student updated','student':student}
+        return HTTPException(status_code=404,detail='student not found')
+
+@app.post('/addStudents')
+def addStd(student:std):
+    for i in students:
+        if student.id == i['id']:
+            raise HTTPException(status_code=400,detail='student alreay present')
+    students.append(student.dict())
+    return {'message':'student added','student':student}
